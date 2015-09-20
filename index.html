@@ -2,8 +2,11 @@
 <head>
    <title>Fargo Moorhead Census Mapper | Blaine Booher</title>
    <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.7.5/leaflet.css" />
+   <link rel="stylesheet" href="/assets/css/leaflet.groupedlayercontrol.min.css">
    <script src="http://cdn.leafletjs.com/leaflet-0.7.5/leaflet.js"></script>
    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+   <script src="/assets/js/leaflet.groupedlayercontrol.min.js"></script>
+
    <style>
       body {
       }
@@ -41,15 +44,44 @@
 
    <script>
 
-      var map = L.map('map').setView([46.8772, -96.7894], 13);
+      
       var data = {};
-      L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6IjZjNmRjNzk3ZmE2MTcwOTEwMGY0MzU3YjUzOWFmNWZhIn0.Y8bhBaUMqFiPrDRW9hieoQ', {
+      layer1 = L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6IjZjNmRjNzk3ZmE2MTcwOTEwMGY0MzU3YjUzOWFmNWZhIn0.Y8bhBaUMqFiPrDRW9hieoQ', {
          maxZoom: 18,
          attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, ' +
             '<a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, ' +
             'Imagery © <a href="http://mapbox.com">Mapbox</a>',
-         id: 'mapbox.light'
-      }).addTo(map);
+         id: 'mapbox.high-contrast'
+      });
+
+      layer2 = L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6IjZjNmRjNzk3ZmE2MTcwOTEwMGY0MzU3YjUzOWFmNWZhIn0.Y8bhBaUMqFiPrDRW9hieoQ', {
+         maxZoom: 18,
+         attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, ' +
+            '<a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, ' +
+            'Imagery © <a href="http://mapbox.com">Mapbox</a>',
+         id: 'mapbox.dark'
+      });
+
+      layer3 = L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6IjZjNmRjNzk3ZmE2MTcwOTEwMGY0MzU3YjUzOWFmNWZhIn0.Y8bhBaUMqFiPrDRW9hieoQ', {
+         maxZoom: 18,
+         attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, ' +
+            '<a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, ' +
+            'Imagery © <a href="http://mapbox.com">Mapbox</a>',
+         id: 'mapbox.streets-satellite'
+      });
+      layers = {'High Contrast': layer1, 'Dark': layer2, 'Satellite': layer3};
+      var map = L.map('map', {layers: [layer1, ]}).setView([46.8772, -96.7894], 13);
+      var overlays = {}
+      //var controlLayers = L.control.layers(layers).addTo(map);
+
+      var dataLayers = new L.LayerGroup();
+      var groupedOverlays = {
+            "Data": {},
+            "Shapefiles": {}
+          };
+      var options = { exclusiveGroups: ["Data"], groupCheckboxes: false };
+      var layerControl = L.control.groupedLayers(layers, groupedOverlays, options);
+      map.addControl(layerControl);
 
       // HD01_VD10 -- > 50%
       // HD01_VD01 -- > total
@@ -57,7 +89,7 @@
       // 
 
       // control that shows state info on hover
-      var info = L.control();
+      var info = L.control({ position: 'topleft' });
 
       info.onAdd = function (map) {
          this._div = L.DomUtil.create('div', 'info');
@@ -66,10 +98,9 @@
       };
 
       info.update = function (props) {
-         debugger;
          this._div.innerHTML = '<h4>Rent to Income Ratio</h4>' +  (props ?
-            '<b>' + props.value + '%</b><br /> of people spend more <br/>than 50% of income on rent'
-            : 'Hover over a state');
+            '<b>' + props.value + '%</b><br /> of people ' + props.title
+            : 'Hover over a census block');
       };
 
       info.addTo(map);
@@ -77,12 +108,12 @@
 
 
       // get color depending on population density value
-      colors = ['rgb(215,48,39)','rgb(252,141,89)','rgb(254,224,139)','rgb(255,255,191)','rgb(217,239,139)','rgb(145,207,96)','rgb(26,152,80)'];
+      colors = ['rgb(166,206,227)','rgb(31,120,180)','rgb(178,223,138)','rgb(51,160,44)','rgb(251,154,153)','rgb(227,26,28)','rgb(253,191,111)']
       data_grades = [10, 20, 30, 40, 50, 60];
       function getColor(d) {
          if (isNaN(d)) {
             // no data
-            return '#fff';
+            return '#fff'
          }
          return d < data_grades[0] ? colors[6] :
                 d < data_grades[1] ? colors[5] :
@@ -104,61 +135,60 @@
          };
       }
 
+      $.getJSON('Schools_Metro.geojson', function(d) {
+         l = L.geoJson( d, {});
+         //controlLayers.addOverlay(l, 'Schools');
+         layerControl.addOverlay(l, 'Schools', 'Shapefiles');
+      });
+
+      $.getJSON('Neighborhoods.geojson', function(d) {
+         l = L.geoJson( d, {});
+         //controlLayers.addOverlay(l, 'Neighborhoods');
+         layerControl.addOverlay(l, 'Neighborhoods', 'Shapefiles');
+      });
+
       var geojson;
-      function setup() {
+      function AddLayerByID(CensusId, title, showImmediately) {
          $.getJSON("census-blocks.geojson",function(blocks){
-           geojson = L.geoJson( blocks, {
-             style: function(feature){
-               var fillColor, goid = feature.properties.GEOID;
-               density = data[goid];
-               total = 0;
-               num = 0;
-               if (density === undefined) {
-               } else {
-                  num = density['HD01_VD10'];
-                  total = density['HD01_VD01'];
-                  density = num / total;
-                  density = Math.round(density * 100)
-               }
-               console.log(density);
-               fillColor = getColor(density);
-               return { 
-                  color: "black",
-                  weight: 2 ,
-                  dashArray: '3',
-                  fillColor: fillColor, 
-                  fillOpacity: .5,
+            geojson = L.geoJson( blocks, {
+               style: function(feature){
+                  var fillColor, goid = feature.properties.GEOID;
+                  density = data[goid];
+                  total = 0;
+                  num = 0;
+                  if (density === undefined) {
+                  } else {
+                     num = density[CensusId];
+                     total = density['HD01_VD01'];
+                     density = num / total;
+                     density = Math.round(density * 100)
+                  }
+                  console.log(density);
+                  fillColor = getColor(density);
+                  return { 
+                     color: "black",
+                     weight: 2 ,
+                     dashArray: '3',
+                     fillColor: fillColor, 
+                     fillOpacity: .7,
                   };
-             },
-             onEachFeature: function( feature, layer ){
-               /*layer.bindPopup( "Percentage of Rent More Than 50% Of Income :: Income: <strong>" + density * 100 + "%</strong> ("+num+"/"+total+")<br/>");*/
-               feature.properties.value = density;
-               onEachFeature(feature, layer);
-             },
-           }).addTo(map);
+               },
+               onEachFeature: function( feature, layer ){
+                  /*layer.bindPopup( "Percentage of Rent More Than 50% Of Income :: Income: <strong>" + density * 100 + "%</strong> ("+num+"/"+total+")<br/>");*/
+                  feature.properties.value = density;
+                  feature.properties.title = title;
+                  onEachFeature(feature, layer);
+               },
+            });
 
-            var legend = L.control({position: 'bottomright'});
-            legend.onAdd = function (map) {
-
-               var div = L.DomUtil.create('div', 'info legend'),
-                  grades = [0].concat(data_grades),
-                  labels = [],
-                  from, to;
-
-               for (var i = 0; i < grades.length; i++) {
-                  from = grades[i];
-                  to = grades[i + 1];
-                  labels.push(
-                     '<i style="background:' + getColor(from + (grades[1] / 100)) + '"></i> ' +
-                     from + (to ? '&ndash;' + to : '+'));
-               }
-
-               div.innerHTML = labels.join('<br>');
-               return div;
-            };
-
-            legend.addTo(map);
-
+            overlays['census-blocks'] = geojson;
+            if (showImmediately)
+            {
+               geojson.addTo(map);
+            }
+            //L.control.layers(layers, overlays).addTo(map);
+            //controlLayers.addOverlay(geojson, title);
+            layerControl.addOverlay(geojson, title, "Data");
          });
       }
 
@@ -170,31 +200,56 @@
                data[d[i]['GEO.id2']] = d[i];
             }
          }
-         setup();
+         AddLayerByID('HD01_VD02', 'rent is < 10% of income', false);
+         AddLayerByID('HD01_BB01', 'rent is 10-20% of income', false);
+         AddLayerByID('HD01_BB02', 'rent is 20-30% of income', false);
+         AddLayerByID('HD01_BB03', 'rent is 30-40% of income', false);
+         AddLayerByID('HD01_VD09', 'rent is 30-40% of income', false);
+         AddLayerByID('HD01_VD10', 'rent is > 50% of income', true);
       });
+
+      var legend = L.control({position: 'bottomright'});
+      legend.onAdd = function (map) {
+         var div = L.DomUtil.create('div', 'info legend'),
+            grades = [0].concat(data_grades),
+            labels = [],
+            from, to;
+
+         for (var i = 0; i < grades.length; i++) {
+            from = grades[i];
+            to = grades[i + 1];
+            labels.push(
+               '<i style="background:' + getColor(from + (grades[1] / 100)) + '"></i> ' +
+               from + (to ? '&ndash;' + to : '+'));
+         }
+
+         div.innerHTML = labels.join('<br>');
+         return div;
+      };
+
+      legend.addTo(map);
 
       function highlightFeature(e) {
          var layer = e.target;
 
+         /*
          layer.setStyle({
             weight: 5,
             color: '#fff',
             dashArray: '',
             fillOpacity: 0.3
-         });
+         }); */
 
          if (!L.Browser.ie && !L.Browser.opera) {
             layer.bringToFront();
          }
-
-         debugger;
          info.update(layer.feature.properties);
       }
 
       var geojson;
 
       function resetHighlight(e) {
-         geojson.resetStyle(e.target);
+         //geojson.resetStyle(e.target);
          info.update();
       }
 
