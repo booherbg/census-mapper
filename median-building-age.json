@@ -1,0 +1,195 @@
+[
+{"GEO.id":"Id","GEO.id2":"Id2","GEO.display-label":"Geography","HD01_VD01":"Estimate; Median year structure built","HD02_VD01":"Margin of Error; Median year structure built"}
+,
+{"GEO.id":"1500000US380170001001","GEO.id2":"380170001001","GEO.display-label":"Block Group 1, Census Tract 1, Cass County, North Dakota","HD01_VD01":"1962","HD02_VD01":"2"}
+,
+{"GEO.id":"1500000US380170001002","GEO.id2":"380170001002","GEO.display-label":"Block Group 2, Census Tract 1, Cass County, North Dakota","HD01_VD01":"1955","HD02_VD01":"2"}
+,
+{"GEO.id":"1500000US380170001003","GEO.id2":"380170001003","GEO.display-label":"Block Group 3, Census Tract 1, Cass County, North Dakota","HD01_VD01":"1976","HD02_VD01":"3"}
+,
+{"GEO.id":"1500000US380170001004","GEO.id2":"380170001004","GEO.display-label":"Block Group 4, Census Tract 1, Cass County, North Dakota","HD01_VD01":"1975","HD02_VD01":"2"}
+,
+{"GEO.id":"1500000US380170002011","GEO.id2":"380170002011","GEO.display-label":"Block Group 1, Census Tract 2.01, Cass County, North Dakota","HD01_VD01":"1978","HD02_VD01":"3"}
+,
+{"GEO.id":"1500000US380170002012","GEO.id2":"380170002012","GEO.display-label":"Block Group 2, Census Tract 2.01, Cass County, North Dakota","HD01_VD01":"1961","HD02_VD01":"3"}
+,
+{"GEO.id":"1500000US380170002013","GEO.id2":"380170002013","GEO.display-label":"Block Group 3, Census Tract 2.01, Cass County, North Dakota","HD01_VD01":"1975","HD02_VD01":"2"}
+,
+{"GEO.id":"1500000US380170002021","GEO.id2":"380170002021","GEO.display-label":"Block Group 1, Census Tract 2.02, Cass County, North Dakota","HD01_VD01":"1982","HD02_VD01":"5"}
+,
+{"GEO.id":"1500000US380170002022","GEO.id2":"380170002022","GEO.display-label":"Block Group 2, Census Tract 2.02, Cass County, North Dakota","HD01_VD01":"1969","HD02_VD01":"3"}
+,
+{"GEO.id":"1500000US380170002023","GEO.id2":"380170002023","GEO.display-label":"Block Group 3, Census Tract 2.02, Cass County, North Dakota","HD01_VD01":"1957","HD02_VD01":"2"}
+,
+{"GEO.id":"1500000US380170003001","GEO.id2":"380170003001","GEO.display-label":"Block Group 1, Census Tract 3, Cass County, North Dakota","HD01_VD01":"1975","HD02_VD01":"7"}
+,
+{"GEO.id":"1500000US380170003002","GEO.id2":"380170003002","GEO.display-label":"Block Group 2, Census Tract 3, Cass County, North Dakota","HD01_VD01":"2002","HD02_VD01":"9"}
+,
+{"GEO.id":"1500000US380170003003","GEO.id2":"380170003003","GEO.display-label":"Block Group 3, Census Tract 3, Cass County, North Dakota","HD01_VD01":"1992","HD02_VD01":"2"}
+,
+{"GEO.id":"1500000US380170004001","GEO.id2":"380170004001","GEO.display-label":"Block Group 1, Census Tract 4, Cass County, North Dakota","HD01_VD01":"1953","HD02_VD01":"3"}
+,
+{"GEO.id":"1500000US380170004002","GEO.id2":"380170004002","GEO.display-label":"Block Group 2, Census Tract 4, Cass County, North Dakota","HD01_VD01":"1952","HD02_VD01":"4"}
+,
+{"GEO.id":"1500000US380170004003","GEO.id2":"380170004003","GEO.display-label":"Block Group 3, Census Tract 4, Cass County, North Dakota","HD01_VD01":"1954","HD02_VD01":"4"}
+,
+{"GEO.id":"1500000US380170004004","GEO.id2":"380170004004","GEO.display-label":"Block Group 4, Census Tract 4, Cass County, North Dakota","HD01_VD01":"1951","HD02_VD01":"11"}
+,
+{"GEO.id":"1500000US380170005011","GEO.id2":"380170005011","GEO.display-label":"Block Group 1, Census Tract 5.01, Cass County, North Dakota","HD01_VD01":"1939","HD02_VD01":"***"}
+,
+{"GEO.id":"1500000US380170005012","GEO.id2":"380170005012","GEO.display-label":"Block Group 2, Census Tract 5.01, Cass County, North Dakota","HD01_VD01":"1939","HD02_VD01":"***"}
+,
+{"GEO.id":"1500000US380170005013","GEO.id2":"380170005013","GEO.display-label":"Block Group 3, Census Tract 5.01, Cass County, North Dakota","HD01_VD01":"1961","HD02_VD01":"19"}
+,
+{"GEO.id":"1500000US380170005014","GEO.id2":"380170005014","GEO.display-label":"Block Group 4, Census Tract 5.01, Cass County, North Dakota","HD01_VD01":"1953","HD02_VD01":"13"}
+,
+{"GEO.id":"1500000US380170005021","GEO.id2":"380170005021","GEO.display-label":"Block Group 1, Census Tract 5.02, Cass County, North Dakota","HD01_VD01":"1947","HD02_VD01":"14"}
+,
+{"GEO.id":"1500000US380170005022","GEO.id2":"380170005022","GEO.display-label":"Block Group 2, Census Tract 5.02, Cass County, North Dakota","HD01_VD01":"1976","HD02_VD01":"4"}
+,
+{"GEO.id":"1500000US380170006001","GEO.id2":"380170006001","GEO.display-label":"Block Group 1, Census Tract 6, Cass County, North Dakota","HD01_VD01":"1975","HD02_VD01":"2"}
+,
+{"GEO.id":"1500000US380170006002","GEO.id2":"380170006002","GEO.display-label":"Block Group 2, Census Tract 6, Cass County, North Dakota","HD01_VD01":"1958","HD02_VD01":"8"}
+,
+{"GEO.id":"1500000US380170006003","GEO.id2":"380170006003","GEO.display-label":"Block Group 3, Census Tract 6, Cass County, North Dakota","HD01_VD01":"1963","HD02_VD01":"11"}
+,
+{"GEO.id":"1500000US380170006004","GEO.id2":"380170006004","GEO.display-label":"Block Group 4, Census Tract 6, Cass County, North Dakota","HD01_VD01":"1978","HD02_VD01":"7"}
+,
+{"GEO.id":"1500000US380170007001","GEO.id2":"380170007001","GEO.display-label":"Block Group 1, Census Tract 7, Cass County, North Dakota","HD01_VD01":"1939","HD02_VD01":"***"}
+,
+{"GEO.id":"1500000US380170007002","GEO.id2":"380170007002","GEO.display-label":"Block Group 2, Census Tract 7, Cass County, North Dakota","HD01_VD01":"1943","HD02_VD01":"12"}
+,
+{"GEO.id":"1500000US380170008011","GEO.id2":"380170008011","GEO.display-label":"Block Group 1, Census Tract 8.01, Cass County, North Dakota","HD01_VD01":"1959","HD02_VD01":"16"}
+,
+{"GEO.id":"1500000US380170008012","GEO.id2":"380170008012","GEO.display-label":"Block Group 2, Census Tract 8.01, Cass County, North Dakota","HD01_VD01":"1939","HD02_VD01":"***"}
+,
+{"GEO.id":"1500000US380170008013","GEO.id2":"380170008013","GEO.display-label":"Block Group 3, Census Tract 8.01, Cass County, North Dakota","HD01_VD01":"1939","HD02_VD01":"***"}
+,
+{"GEO.id":"1500000US380170008014","GEO.id2":"380170008014","GEO.display-label":"Block Group 4, Census Tract 8.01, Cass County, North Dakota","HD01_VD01":"1945","HD02_VD01":"15"}
+,
+{"GEO.id":"1500000US380170008021","GEO.id2":"380170008021","GEO.display-label":"Block Group 1, Census Tract 8.02, Cass County, North Dakota","HD01_VD01":"1939","HD02_VD01":"***"}
+,
+{"GEO.id":"1500000US380170008022","GEO.id2":"380170008022","GEO.display-label":"Block Group 2, Census Tract 8.02, Cass County, North Dakota","HD01_VD01":"1939","HD02_VD01":"***"}
+,
+{"GEO.id":"1500000US380170008023","GEO.id2":"380170008023","GEO.display-label":"Block Group 3, Census Tract 8.02, Cass County, North Dakota","HD01_VD01":"1942","HD02_VD01":"5"}
+,
+{"GEO.id":"1500000US380170008024","GEO.id2":"380170008024","GEO.display-label":"Block Group 4, Census Tract 8.02, Cass County, North Dakota","HD01_VD01":"1959","HD02_VD01":"18"}
+,
+{"GEO.id":"1500000US380170008025","GEO.id2":"380170008025","GEO.display-label":"Block Group 5, Census Tract 8.02, Cass County, North Dakota","HD01_VD01":"1969","HD02_VD01":"11"}
+,
+{"GEO.id":"1500000US380170009011","GEO.id2":"380170009011","GEO.display-label":"Block Group 1, Census Tract 9.01, Cass County, North Dakota","HD01_VD01":"1939","HD02_VD01":"***"}
+,
+{"GEO.id":"1500000US380170009012","GEO.id2":"380170009012","GEO.display-label":"Block Group 2, Census Tract 9.01, Cass County, North Dakota","HD01_VD01":"1951","HD02_VD01":"3"}
+,
+{"GEO.id":"1500000US380170009013","GEO.id2":"380170009013","GEO.display-label":"Block Group 3, Census Tract 9.01, Cass County, North Dakota","HD01_VD01":"1958","HD02_VD01":"3"}
+,
+{"GEO.id":"1500000US380170009014","GEO.id2":"380170009014","GEO.display-label":"Block Group 4, Census Tract 9.01, Cass County, North Dakota","HD01_VD01":"1959","HD02_VD01":"4"}
+,
+{"GEO.id":"1500000US380170009015","GEO.id2":"380170009015","GEO.display-label":"Block Group 5, Census Tract 9.01, Cass County, North Dakota","HD01_VD01":"1956","HD02_VD01":"2"}
+,
+{"GEO.id":"1500000US380170009031","GEO.id2":"380170009031","GEO.display-label":"Block Group 1, Census Tract 9.03, Cass County, North Dakota","HD01_VD01":"1985","HD02_VD01":"6"}
+,
+{"GEO.id":"1500000US380170009032","GEO.id2":"380170009032","GEO.display-label":"Block Group 2, Census Tract 9.03, Cass County, North Dakota","HD01_VD01":"1981","HD02_VD01":"4"}
+,
+{"GEO.id":"1500000US380170009033","GEO.id2":"380170009033","GEO.display-label":"Block Group 3, Census Tract 9.03, Cass County, North Dakota","HD01_VD01":"1985","HD02_VD01":"2"}
+,
+{"GEO.id":"1500000US380170009041","GEO.id2":"380170009041","GEO.display-label":"Block Group 1, Census Tract 9.04, Cass County, North Dakota","HD01_VD01":"1971","HD02_VD01":"4"}
+,
+{"GEO.id":"1500000US380170009042","GEO.id2":"380170009042","GEO.display-label":"Block Group 2, Census Tract 9.04, Cass County, North Dakota","HD01_VD01":"1982","HD02_VD01":"3"}
+,
+{"GEO.id":"1500000US380170009043","GEO.id2":"380170009043","GEO.display-label":"Block Group 3, Census Tract 9.04, Cass County, North Dakota","HD01_VD01":"1977","HD02_VD01":"2"}
+,
+{"GEO.id":"1500000US380170010011","GEO.id2":"380170010011","GEO.display-label":"Block Group 1, Census Tract 10.01, Cass County, North Dakota","HD01_VD01":"1984","HD02_VD01":"6"}
+,
+{"GEO.id":"1500000US380170010012","GEO.id2":"380170010012","GEO.display-label":"Block Group 2, Census Tract 10.01, Cass County, North Dakota","HD01_VD01":"1983","HD02_VD01":"2"}
+,
+{"GEO.id":"1500000US380170010013","GEO.id2":"380170010013","GEO.display-label":"Block Group 3, Census Tract 10.01, Cass County, North Dakota","HD01_VD01":"1987","HD02_VD01":"3"}
+,
+{"GEO.id":"1500000US380170010021","GEO.id2":"380170010021","GEO.display-label":"Block Group 1, Census Tract 10.02, Cass County, North Dakota","HD01_VD01":"1975","HD02_VD01":"2"}
+,
+{"GEO.id":"1500000US380170010022","GEO.id2":"380170010022","GEO.display-label":"Block Group 2, Census Tract 10.02, Cass County, North Dakota","HD01_VD01":"1967","HD02_VD01":"1"}
+,
+{"GEO.id":"1500000US380170101061","GEO.id2":"380170101061","GEO.display-label":"Block Group 1, Census Tract 101.06, Cass County, North Dakota","HD01_VD01":"1994","HD02_VD01":"2"}
+,
+{"GEO.id":"1500000US380170101062","GEO.id2":"380170101062","GEO.display-label":"Block Group 2, Census Tract 101.06, Cass County, North Dakota","HD01_VD01":"1992","HD02_VD01":"2"}
+,
+{"GEO.id":"1500000US380170101071","GEO.id2":"380170101071","GEO.display-label":"Block Group 1, Census Tract 101.07, Cass County, North Dakota","HD01_VD01":"1992","HD02_VD01":"4"}
+,
+{"GEO.id":"1500000US380170101072","GEO.id2":"380170101072","GEO.display-label":"Block Group 2, Census Tract 101.07, Cass County, North Dakota","HD01_VD01":"1986","HD02_VD01":"2"}
+,
+{"GEO.id":"1500000US380170101081","GEO.id2":"380170101081","GEO.display-label":"Block Group 1, Census Tract 101.08, Cass County, North Dakota","HD01_VD01":"1998","HD02_VD01":"3"}
+,
+{"GEO.id":"1500000US380170101082","GEO.id2":"380170101082","GEO.display-label":"Block Group 2, Census Tract 101.08, Cass County, North Dakota","HD01_VD01":"1995","HD02_VD01":"2"}
+,
+{"GEO.id":"1500000US380170101091","GEO.id2":"380170101091","GEO.display-label":"Block Group 1, Census Tract 101.09, Cass County, North Dakota","HD01_VD01":"1989","HD02_VD01":"5"}
+,
+{"GEO.id":"1500000US380170101092","GEO.id2":"380170101092","GEO.display-label":"Block Group 2, Census Tract 101.09, Cass County, North Dakota","HD01_VD01":"1995","HD02_VD01":"3"}
+,
+{"GEO.id":"1500000US380170102011","GEO.id2":"380170102011","GEO.display-label":"Block Group 1, Census Tract 102.01, Cass County, North Dakota","HD01_VD01":"1975","HD02_VD01":"6"}
+,
+{"GEO.id":"1500000US380170102012","GEO.id2":"380170102012","GEO.display-label":"Block Group 2, Census Tract 102.01, Cass County, North Dakota","HD01_VD01":"1996","HD02_VD01":"3"}
+,
+{"GEO.id":"1500000US380170102013","GEO.id2":"380170102013","GEO.display-label":"Block Group 3, Census Tract 102.01, Cass County, North Dakota","HD01_VD01":"1966","HD02_VD01":"4"}
+,
+{"GEO.id":"1500000US380170102031","GEO.id2":"380170102031","GEO.display-label":"Block Group 1, Census Tract 102.03, Cass County, North Dakota","HD01_VD01":"1975","HD02_VD01":"2"}
+,
+{"GEO.id":"1500000US380170102032","GEO.id2":"380170102032","GEO.display-label":"Block Group 2, Census Tract 102.03, Cass County, North Dakota","HD01_VD01":"1974","HD02_VD01":"2"}
+,
+{"GEO.id":"1500000US380170102033","GEO.id2":"380170102033","GEO.display-label":"Block Group 3, Census Tract 102.03, Cass County, North Dakota","HD01_VD01":"1954","HD02_VD01":"4"}
+,
+{"GEO.id":"1500000US380170102041","GEO.id2":"380170102041","GEO.display-label":"Block Group 1, Census Tract 102.04, Cass County, North Dakota","HD01_VD01":"1969","HD02_VD01":"4"}
+,
+{"GEO.id":"1500000US380170102042","GEO.id2":"380170102042","GEO.display-label":"Block Group 2, Census Tract 102.04, Cass County, North Dakota","HD01_VD01":"2001","HD02_VD01":"2"}
+,
+{"GEO.id":"1500000US380170103031","GEO.id2":"380170103031","GEO.display-label":"Block Group 1, Census Tract 103.03, Cass County, North Dakota","HD01_VD01":"1995","HD02_VD01":"2"}
+,
+{"GEO.id":"1500000US380170103032","GEO.id2":"380170103032","GEO.display-label":"Block Group 2, Census Tract 103.03, Cass County, North Dakota","HD01_VD01":"1997","HD02_VD01":"2"}
+,
+{"GEO.id":"1500000US380170103033","GEO.id2":"380170103033","GEO.display-label":"Block Group 3, Census Tract 103.03, Cass County, North Dakota","HD01_VD01":"1996","HD02_VD01":"2"}
+,
+{"GEO.id":"1500000US380170103034","GEO.id2":"380170103034","GEO.display-label":"Block Group 4, Census Tract 103.03, Cass County, North Dakota","HD01_VD01":"1996","HD02_VD01":"2"}
+,
+{"GEO.id":"1500000US380170103051","GEO.id2":"380170103051","GEO.display-label":"Block Group 1, Census Tract 103.05, Cass County, North Dakota","HD01_VD01":"1999","HD02_VD01":"2"}
+,
+{"GEO.id":"1500000US380170103052","GEO.id2":"380170103052","GEO.display-label":"Block Group 2, Census Tract 103.05, Cass County, North Dakota","HD01_VD01":"1992","HD02_VD01":"3"}
+,
+{"GEO.id":"1500000US380170103061","GEO.id2":"380170103061","GEO.display-label":"Block Group 1, Census Tract 103.06, Cass County, North Dakota","HD01_VD01":"1990","HD02_VD01":"3"}
+,
+{"GEO.id":"1500000US380170103062","GEO.id2":"380170103062","GEO.display-label":"Block Group 2, Census Tract 103.06, Cass County, North Dakota","HD01_VD01":"1990","HD02_VD01":"3"}
+,
+{"GEO.id":"1500000US380170103071","GEO.id2":"380170103071","GEO.display-label":"Block Group 1, Census Tract 103.07, Cass County, North Dakota","HD01_VD01":"1993","HD02_VD01":"2"}
+,
+{"GEO.id":"1500000US380170401001","GEO.id2":"380170401001","GEO.display-label":"Block Group 1, Census Tract 401, Cass County, North Dakota","HD01_VD01":"1955","HD02_VD01":"10"}
+,
+{"GEO.id":"1500000US380170401002","GEO.id2":"380170401002","GEO.display-label":"Block Group 2, Census Tract 401, Cass County, North Dakota","HD01_VD01":"1964","HD02_VD01":"4"}
+,
+{"GEO.id":"1500000US380170401003","GEO.id2":"380170401003","GEO.display-label":"Block Group 3, Census Tract 401, Cass County, North Dakota","HD01_VD01":"1968","HD02_VD01":"10"}
+,
+{"GEO.id":"1500000US380170402001","GEO.id2":"380170402001","GEO.display-label":"Block Group 1, Census Tract 402, Cass County, North Dakota","HD01_VD01":"1974","HD02_VD01":"6"}
+,
+{"GEO.id":"1500000US380170402002","GEO.id2":"380170402002","GEO.display-label":"Block Group 2, Census Tract 402, Cass County, North Dakota","HD01_VD01":"1952","HD02_VD01":"5"}
+,
+{"GEO.id":"1500000US380170403001","GEO.id2":"380170403001","GEO.display-label":"Block Group 1, Census Tract 403, Cass County, North Dakota","HD01_VD01":"1974","HD02_VD01":"8"}
+,
+{"GEO.id":"1500000US380170403002","GEO.id2":"380170403002","GEO.display-label":"Block Group 2, Census Tract 403, Cass County, North Dakota","HD01_VD01":"1974","HD02_VD01":"3"}
+,
+{"GEO.id":"1500000US380170403003","GEO.id2":"380170403003","GEO.display-label":"Block Group 3, Census Tract 403, Cass County, North Dakota","HD01_VD01":"1973","HD02_VD01":"8"}
+,
+{"GEO.id":"1500000US380170404001","GEO.id2":"380170404001","GEO.display-label":"Block Group 1, Census Tract 404, Cass County, North Dakota","HD01_VD01":"1983","HD02_VD01":"4"}
+,
+{"GEO.id":"1500000US380170404002","GEO.id2":"380170404002","GEO.display-label":"Block Group 2, Census Tract 404, Cass County, North Dakota","HD01_VD01":"1976","HD02_VD01":"2"}
+,
+{"GEO.id":"1500000US380170404003","GEO.id2":"380170404003","GEO.display-label":"Block Group 3, Census Tract 404, Cass County, North Dakota","HD01_VD01":"1988","HD02_VD01":"9"}
+,
+{"GEO.id":"1500000US380170405001","GEO.id2":"380170405001","GEO.display-label":"Block Group 1, Census Tract 405, Cass County, North Dakota","HD01_VD01":"1978","HD02_VD01":"10"}
+,
+{"GEO.id":"1500000US380170405002","GEO.id2":"380170405002","GEO.display-label":"Block Group 2, Census Tract 405, Cass County, North Dakota","HD01_VD01":"2004","HD02_VD01":"1"}
+,
+{"GEO.id":"1500000US380170405003","GEO.id2":"380170405003","GEO.display-label":"Block Group 3, Census Tract 405, Cass County, North Dakota","HD01_VD01":"1989","HD02_VD01":"7"}
+,
+{"GEO.id":"1500000US380170406001","GEO.id2":"380170406001","GEO.display-label":"Block Group 1, Census Tract 406, Cass County, North Dakota","HD01_VD01":"1950","HD02_VD01":"11"}
+,
+{"GEO.id":"1500000US380170406002","GEO.id2":"380170406002","GEO.display-label":"Block Group 2, Census Tract 406, Cass County, North Dakota","HD01_VD01":"1980","HD02_VD01":"7"}
+,
+{"GEO.id":"1500000US380170406003","GEO.id2":"380170406003","GEO.display-label":"Block Group 3, Census Tract 406, Cass County, North Dakota","HD01_VD01":"1971","HD02_VD01":"7"}
+]
