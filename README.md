@@ -8,5 +8,8 @@ just use the built in HTTP server:
 $ python -m SimpleHTTPServer
 ```
 
+You can change which datafile is loaded, and the color scheme by adjusting the two
+variables around line 100 (`data_to_use` and `colors`)
+
 and then visit http://localhost:8000
 
