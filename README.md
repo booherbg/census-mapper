@@ -4,6 +4,9 @@ The main branch contains the starting repo and checkpoints folder for a GIS
 Workshop. For a more advanced and less documented project (that includes 
 multiple data sets), see the `hackathon` branch.
 
+To see the final solution, just copy the `checkpoints/04/script-final.js`
+into the `script.js` file.
+
 To run the project just clone the project and use any static HTTP server like 
 `python -m SimpleHTTPServer` or `serve` (install with `npm install -g serve`).
 
