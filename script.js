@@ -47,53 +47,63 @@ const layer3 = L.tileLayer('https://api.mapbox.com/styles/v1/mapbox/{id}/tiles/{
 // Create a map, show the first layer, and set the view to downtown fargo at zoom level 13
 const map = L.map('map', {layers: [layer1, ]}).setView([46.8772, -96.7894], 13);
 
-// Create a little layer control in the top right corner with all 3 map layers
-const layers = {'Streets': layer1, 'Dark': layer2, 'Light': layer3};
-let controlLayers = L.control.layers(layers).addTo(map);
+// Create a the controls (layers, legend, info)
+let controlLayers = L.control.layers({
+   'Streets': layer1, 
+   'Dark': layer2, 
+   'Light': layer3
+}).addTo(map);
 const legend = L.control({ position: 'bottomright' } );
 const info = L.control({ position: 'topleft' });
 /***************** End leaflet config *****************/
 
-// add layers and color them based on value
-function AddLayerByID(geoLookupTable, CensusId, dataGrades, layerTitle) {
-   $.getJSON("./data/census-blocks.geojson", function(blocks){
-      let dataValue;
-      let geojson = L.geoJson(blocks, {
-         style: (feature) => {
-            // Look up the data we want to visualize in the lookup table by the census block ID
-            let geoID = feature.properties.GEOID;
-            dataValue = geoLookupTable[geoID] ? geoLookupTable[geoID][CensusId] : undefined;
+// add data layers and color them based on value
+const AddLayerByID = async (geoLookupTable, CensusId, dataGrades, layerTitle) => {
+   // Grab the geojson file via HTTP
+   let blocks = await (await fetch("./data/census-blocks.geojson")).json();
+   // Create a Leaflet geoJSON layer
+   let geojson = L.geoJson(blocks, {
+      style: function(feature) {
+         /* This function gets called for *each* feature in the layer. This function is
+            responsible for figuring out what style to apply to the feature. We do this by
+            looking up the housing data for the given census block and figuring out the color
+            that this block should be based on the data grade and scale */
 
-            // Given the looked up value on this layer, determine what color we should make it
-            let fillColor = getColor(dataValue, dataGrades);
-            return { 
-               color: 'black',
-               dashArray: '2',
-               fillColor: fillColor, 
-               fillOpacity: .6,
-               weight: '1'
-            };
-         },
-         onEachFeature: function( feature, layer ) {
-            layer.bindPopup(`Median Age of Structures: <strong>${dataValue}</strong>`);
-            feature.properties.value = dataValue;
-            feature.properties.title = layerTitle;
-            debugger;
-            layer.on({
-               mouseover: function(e) { info.update(e.target.feature.properties) },
-               mouseout: function(e) { info.update() },
-               // click: function(e) { map.fitBounds(e.target.getBounds())},
-            });
-         },
-      });
+         // First, look up the data we want to visualize in the lookup table by the census block ID
+         let geoID = feature.properties.GEOID;
 
-      geojson.addTo(map);
-      controlLayers.addOverlay(geojson, layerTitle);
+         // store on this.dataValue so the onEachFeature function can access it later
+         this.dataValue = geoLookupTable[geoID] ? geoLookupTable[geoID][CensusId] : undefined;
+
+         // Given the year of the housing structure, what color should we give it?
+         let fillColor = getColor(this.dataValue, dataGrades);
+         return { 
+            color: 'black',
+            dashArray: '2',
+            fillColor: fillColor, 
+            fillOpacity: .6,
+            weight: '1'
+         };
+      },
+      onEachFeature: function( feature, layer ) {
+         // When each feature is created, give it a popup and set up some mouse interactions
+         layer.bindPopup(`Median Age of Structures: <strong>${this.dataValue}</strong>`);
+         feature.properties.value = this.dataValue;
+         feature.properties.title = layerTitle;
+         layer.on({
+            mouseover: function(e) { info.update(e.target.feature.properties) },
+            mouseout: function(e) { info.update() },
+            // click: function(e) { map.fitBounds(e.target.getBounds())},
+         });
+      },
    });
+
+   geojson.addTo(map);
+   controlLayers.addOverlay(geojson, layerTitle);
 }
 
 // A little helper function to figure out which color to use for a given data value
-function getColor(value, dataGrades) {
+const getColor = (value, dataGrades) => {
    if (isNaN(value) || !value) return '#fff'
    for (let i=0; i<dataGrades.length; i++) {
       if (Number(value) <= Number(dataGrades[i])) return colors[i]
@@ -118,7 +128,7 @@ const setup = async () => {
          '380170001001': {GEO.id, GEO.id2, HD01_VD01, etc}
       }
    */
-   const geoLookupTable = (await $.getJSON(filename)).reduce((map, row, index) => {
+   const geoLookupTable = (await (await fetch(filename)).json()).reduce((map, row, index) => {
       if (index === 0) return map; // skip the header of the data (first row)
       map[row['GEO.id2']] = row;
       return map;
@@ -146,7 +156,6 @@ const setup = async () => {
    };
    legend.addTo(map);
 
-
    // control that shows state info on hover
    info.onAdd = function (map) {
       this._div = L.DomUtil.create('div', 'info');
@@ -166,7 +175,10 @@ const setup = async () => {
    info.addTo(map);
 
    // Add some other local geoJSON layers for flavor, with default styling
-   $.getJSON('data/Neighborhoods.geojson', (data) => controlLayers.addOverlay(L.geoJson(data, {}), 'Neighborhoods'));
-   $.getJSON('data/Schools_Metro.geojson', (data) => controlLayers.addOverlay(L.geoJson(data, {}), 'Schools'));
+   const neighborhoods = await (await fetch('data/Neighborhoods.geojson')).json();
+   controlLayers.addOverlay(L.geoJson(neighborhoods, {}), 'Neighborhoods');
+
+   const schools = await (await fetch('data/Schools_Metro.geojson')).json();
+   controlLayers.addOverlay(L.geoJson(schools, {}), 'Schools');
 }
 setup();
