@@ -50,7 +50,7 @@ const map = L.map('map', {layers: [layer1, ]}).setView([46.8772, -96.7894], 13);
 // Create a little layer control in the top right corner with all 3 map layers
 const layers = {'Streets': layer1, 'Dark': layer2, 'Light': layer3};
 let controlLayers = L.control.layers(layers).addTo(map);
-const legend = L.control({ position: 'bottomright'} );
+const legend = L.control({ position: 'bottomright' } );
 const info = L.control({ position: 'topleft' });
 /***************** End leaflet config *****************/
 
