@@ -1,9 +1,11 @@
-# census-mapper
-Civic Hackathon Weekend 2015 project: Still a work in progress, needs cleaned up and refactored
+# Census Mapper GIS Workshop
 
-Running this is pretty easy. Clone the project, then make sure python is installed. Then
-just use any static HTTP server like `python -m SimpleHTTPServer` or `serve` (install with
-`npm install -g serve`)
+The main branch contains the starting repo and checkpoints folder for a GIS 
+Workshop. For a more advanced and less documented project (that includes 
+multiple data sets), see the `hackathon` branch.
+
+To run the project just clone the project and use any static HTTP server like 
+`python -m SimpleHTTPServer` or `serve` (install with `npm install -g serve`).
 
 ## To download census data:
 
