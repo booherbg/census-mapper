@@ -1,3 +1,27 @@
+/*
+   Census Data Mapper example with Leaflet | Blaine Booher
+
+   Originally this was written for a hackathon. You can see the less clean version on the
+   hackathon branch (this includes examples of using multiple layers at once).
+
+   The general idea of this script:
+      1. Sets up a Leaflet map with mapbox (using a hard coded token from my account)
+      2. Load two geoJSON layers (fargo neighborhoods and school districts) as an example
+      3. Load up the census data and store it in a lookup table organized by census block ID
+      4. Load a geoJSON layer that contains the polygons for each census block along with
+         the unique ID of the census block. For each polygon, find the corresponding data
+         in the housing census lookup table. Use this to determine what color the census
+         block should be.
+      5. Add some extra stuff like legend, mouse hover interactions, and toggleable layers.
+
+      The checkpoints/ folder contains 4 checkpoints:
+         Checkpoint 1: Show a map on the DOM
+         Checkpoint 2: Add GeoJSON layers (no colors)
+         Checkpoint 3: Integrate the census housing data (colors)
+         Checkpoint 4: Add legends, info panel, controls, etc.
+*/
+
+
 // these are from colorbrewer2.org
 const color_patterns = [    
    // quantitative colors
@@ -59,9 +83,10 @@ let controlLayers = L.control.layers({
 const AddLayerByID = async (geoLookupTable, CensusId, dataGrades, layerTitle) => {
    // Grab the geojson file via HTTP
    let blocks = await (await fetch("./data/census-blocks.geojson")).json();
+   let dataValue;
    // Create a Leaflet geoJSON layer
    let geojson = L.geoJson(blocks, {
-      style: function(feature) {
+      style: (feature) => {
          /* This function gets called for *each* feature in the layer. This function is
             responsible for figuring out what style to apply to the feature. We do this by
             looking up the housing data for the given census block and figuring out the color
@@ -71,10 +96,10 @@ const AddLayerByID = async (geoLookupTable, CensusId, dataGrades, layerTitle) =>
          let geoID = feature.properties.GEOID;
 
          // store on this.dataValue so the onEachFeature function can access it later
-         this.dataValue = geoLookupTable[geoID] ? geoLookupTable[geoID][CensusId] : undefined;
+         dataValue = geoLookupTable[geoID] ? geoLookupTable[geoID][CensusId] : undefined;
 
          // Given the year of the housing structure, what color should we give it?
-         let fillColor = getColor(this.dataValue, dataGrades);
+         let fillColor = getColor(dataValue, dataGrades);
          return { 
             color: 'black',
             dashArray: '2',
@@ -83,9 +108,9 @@ const AddLayerByID = async (geoLookupTable, CensusId, dataGrades, layerTitle) =>
             weight: '1'
          };
       },
-      onEachFeature: function( feature, layer ) {
+      onEachFeature: ( feature, layer ) => {
          // When each feature is created, give it a popup and set up some mouse interactions
-         layer.bindPopup(`Median Age of Structures: <strong>${this.dataValue}</strong>`);
+         layer.bindPopup(`Median Age of Structures: <strong>${dataValue}</strong>`);
       },
    });
 

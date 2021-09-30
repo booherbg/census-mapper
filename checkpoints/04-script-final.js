@@ -85,9 +85,10 @@ const info = L.control({ position: 'topleft' });
 const AddLayerByID = async (geoLookupTable, CensusId, dataGrades, layerTitle) => {
    // Grab the geojson file via HTTP
    let blocks = await (await fetch("./data/census-blocks.geojson")).json();
+   let dataValue;
    // Create a Leaflet geoJSON layer
    let geojson = L.geoJson(blocks, {
-      style: function(feature) {
+      style: (feature) => {
          /* This function gets called for *each* feature in the layer. This function is
             responsible for figuring out what style to apply to the feature. We do this by
             looking up the housing data for the given census block and figuring out the color
@@ -97,10 +98,10 @@ const AddLayerByID = async (geoLookupTable, CensusId, dataGrades, layerTitle) =>
          let geoID = feature.properties.GEOID;
 
          // store on this.dataValue so the onEachFeature function can access it later
-         this.dataValue = geoLookupTable[geoID] ? geoLookupTable[geoID][CensusId] : undefined;
+         dataValue = geoLookupTable[geoID] ? geoLookupTable[geoID][CensusId] : undefined;
 
          // Given the year of the housing structure, what color should we give it?
-         let fillColor = getColor(this.dataValue, dataGrades);
+         let fillColor = getColor(dataValue, dataGrades);
          return { 
             color: 'black',
             dashArray: '2',
@@ -109,14 +110,14 @@ const AddLayerByID = async (geoLookupTable, CensusId, dataGrades, layerTitle) =>
             weight: '1'
          };
       },
-      onEachFeature: function( feature, layer ) {
+      onEachFeature: ( feature, layer ) => {
          // When each feature is created, give it a popup and set up some mouse interactions
-         layer.bindPopup(`Median Age of Structures: <strong>${this.dataValue}</strong>`);
-         feature.properties.value = this.dataValue;
+         layer.bindPopup(`Median Age of Structures: <strong>${dataValue}</strong>`);
+         feature.properties.value = dataValue;
          feature.properties.title = layerTitle;
          layer.on({
-            mouseover: function(e) { info.update(e.target.feature.properties) },
-            mouseout: function(e) { info.update() },
+            mouseover: (e) => { info.update(e.target.feature.properties) },
+            mouseout: (e) => { info.update() },
             // click: function(e) { map.fitBounds(e.target.getBounds())},
          });
       },
