@@ -1,5 +1,7 @@
 # Census Mapper GIS Workshop
 
+![Map Screenshot](/census-map-screenshot.png?raw=true "Map Screenshot")
+
 The main branch contains the starting repo and checkpoints folder for a GIS 
 Workshop. For a more advanced and less documented project (that includes 
 multiple data sets), see the `hackathon` branch.
