@@ -9,18 +9,17 @@ const color_patterns = [
    // divergent colors
    ['rgb(215,48,39)','rgb(252,141,89)','rgb(254,224,139)','rgb(255,255,191)','rgb(217,239,139)','rgb(145,207,96)','rgb(26,152,80)']
 ];
-const colors = color_patterns[0];
+const colors = color_patterns[1];
 
 // a list of available data sets (filename, legend grades, title, layers etc.)
 const housing_data = {
    filename: 'data/median-building-age.json', 
-   dataGrades: [1940, 1960, 1970, 1980, 1990, 2000],
+   dataGrades: [1940, 1950, 1960, 1970, 1980, 1990, 2000],
    layerTitle: 'Median Building Age',
    censusId: 'HD01_VD01'
 }
 
-
-/************* Leafconst setup ************/
+/************* Leaflet setup ************/
 const layer1 = L.tileLayer('https://api.mapbox.com/styles/v1/mapbox/{id}/tiles/{z}/{x}/{y}?access_token=pk.eyJ1IjoiYmxhaW5lYm9vaGVyIiwiYSI6ImNqdnpyZXYyazAzY2I0YXJ3NXU2bncza3EifQ.r-UXneroYKijhSlT4MVZjw', {
    maxZoom: 18,
    attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, ' +
@@ -102,7 +101,6 @@ function getColor(value, dataGrades) {
    return colors[colors.length-1];
 }
 
-// const data = {};
 const setup = async () => {
    const { filename, dataGrades, censusId, layerTitle } = housing_data;
    // Create a simple lookup table so we can easily grab data for any given Census Block ID:
@@ -126,7 +124,7 @@ const setup = async () => {
       return map;
    }, {});
 
-   // Loop over all of the data layers (for housing, its just one data layer) and map each one
+   // Add the actual housing layer to leaflet
    AddLayerByID(geoLookupTable, censusId, dataGrades, layerTitle);
 
    // Set up the legend based on the color grades
@@ -171,6 +169,4 @@ const setup = async () => {
    $.getJSON('data/Neighborhoods.geojson', (data) => controlLayers.addOverlay(L.geoJson(data, {}), 'Neighborhoods'));
    $.getJSON('data/Schools_Metro.geojson', (data) => controlLayers.addOverlay(L.geoJson(data, {}), 'Schools'));
 }
-
-
 setup();
