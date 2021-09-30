@@ -9,14 +9,14 @@ const color_patterns = [
    // divergent colors
    ['rgb(215,48,39)','rgb(252,141,89)','rgb(254,224,139)','rgb(255,255,191)','rgb(217,239,139)','rgb(145,207,96)','rgb(26,152,80)']
 ];
-const colors = color_patterns[1];
+const colors = color_patterns[2];
 
 // a list of available data sets (filename, legend grades, title, layers etc.)
 const housing_data = {
-   filename: 'data/median-building-age.json', 
-   dataGrades: [1940, 1950, 1960, 1970, 1980, 1990, 2000],
-   layerTitle: 'Median Building Age',
-   censusId: 'HD01_VD01'
+   filename: 'data/median-building-age.json', // json tile that we will use to build the colors
+   colorSegments: [1940, 1950, 1960, 1970, 1980, 1990, 2000], // how to determine color grades for each housing age
+   layerTitle: 'Median Building Age', // title of the data set
+   censusId: 'HD01_VD01', // key in json file where actual data for census block is located
 }
 
 /************* Leaflet setup ************/
@@ -58,7 +58,7 @@ const info = L.control({ position: 'topleft' });
 /***************** End leaflet config *****************/
 
 // add data layers and color them based on value
-const AddLayerByID = async (geoLookupTable, CensusId, dataGrades, layerTitle) => {
+const AddLayerByID = async (geoLookupTable, CensusId, colorSegments, layerTitle) => {
    // Grab the geojson file via HTTP
    let blocks = await (await fetch("./data/census-blocks.geojson")).json();
    // Create a Leaflet geoJSON layer
@@ -76,7 +76,7 @@ const AddLayerByID = async (geoLookupTable, CensusId, dataGrades, layerTitle) =>
          this.dataValue = geoLookupTable[geoID] ? geoLookupTable[geoID][CensusId] : undefined;
 
          // Given the year of the housing structure, what color should we give it?
-         let fillColor = getColor(this.dataValue, dataGrades);
+         let fillColor = getColor(this.dataValue, colorSegments);
          return { 
             color: 'black',
             dashArray: '2',
@@ -103,16 +103,16 @@ const AddLayerByID = async (geoLookupTable, CensusId, dataGrades, layerTitle) =>
 }
 
 // A little helper function to figure out which color to use for a given data value
-const getColor = (value, dataGrades) => {
+const getColor = (value, colorSegments) => {
    if (isNaN(value) || !value) return '#fff'
-   for (let i=0; i<dataGrades.length; i++) {
-      if (Number(value) <= Number(dataGrades[i])) return colors[i]
+   for (let i=0; i<colorSegments.length; i++) {
+      if (Number(value) <= Number(colorSegments[i])) return colors[i]
    }
    return colors[colors.length-1];
 }
 
 const setup = async () => {
-   const { filename, dataGrades, censusId, layerTitle } = housing_data;
+   const { filename, colorSegments, censusId, layerTitle } = housing_data;
    // Create a simple lookup table so we can easily grab data for any given Census Block ID:
    /* Each row in the JSON array will look like this:
       {
@@ -135,19 +135,19 @@ const setup = async () => {
    }, {});
 
    // Add the actual housing layer to leaflet
-   AddLayerByID(geoLookupTable, censusId, dataGrades, layerTitle);
+   AddLayerByID(geoLookupTable, censusId, colorSegments, layerTitle);
 
    // Set up the legend based on the color grades
    legend.onAdd = function (map) {
       const div = L.DomUtil.create('div', 'info legend');
-      const grades = [0].concat(dataGrades);
+      const grades = [0].concat(colorSegments);
       const labels = [];
    
       for (let i = 0; i < grades.length; i++) {
          const from = grades[i];
          const to = grades[i + 1];
          labels.push(
-            '<i style="background:' + getColor(from + .00001, dataGrades) + '"></i> ' +
+            '<i style="background:' + getColor(from + .00001, colorSegments) + '"></i> ' +
             from + (to ? '&ndash;' + to : '+'));
       }
    
